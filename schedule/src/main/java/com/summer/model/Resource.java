@@ -1,5 +1,6 @@
 package com.summer.model;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.jfinal.plugin.activerecord.Model;
 
 import java.util.*;
@@ -11,6 +12,8 @@ public class Resource extends Model<Resource> {
     public static final Resource dao = new Resource();
     public static final int ROOT_RESOURCE_ID = 0;
 
+
+    @JSONField(serialize = true)
     private List<Resource> subResource = new ArrayList<Resource>();
 
     public void setSubResource(List<Resource> subResource) {
@@ -18,6 +21,7 @@ public class Resource extends Model<Resource> {
     }
 
     public List<Resource> getSubResource()  {
+//        set("subResource",subResource);
         return this.subResource;
     }
 
@@ -42,5 +46,16 @@ public class Resource extends Model<Resource> {
         for (Iterator<Resource> it = subResource.iterator(); it.hasNext();) {
             it.next().sort(flag);
         }
+    }
+
+    /**
+     * jfinal Model类中新添加的属性字段要想序列化时被输出，一定要覆盖@{Model#_getAttrs}方法
+     * @return
+     */
+    @Override
+    protected Map<String,Object> _getAttrs() {
+        Map<String,Object> attrs = super._getAttrs();
+        attrs.put("subResource",subResource);
+        return attrs;
     }
 }

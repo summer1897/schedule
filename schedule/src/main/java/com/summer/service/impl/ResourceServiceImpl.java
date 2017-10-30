@@ -1,5 +1,6 @@
 package com.summer.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.summer.model.Resource;
 import com.summer.service.IResourceService;
 
@@ -13,10 +14,8 @@ public class ResourceServiceImpl implements IResourceService{
     public List<Resource> queryAll() {
         String sql = "select *from sys_resource";
         List<Resource> resources = Resource.dao.find(sql);
-        List<Resource> rootResource = new ArrayList<Resource>();
 
-
-        return rootResource;
+        return createTreeResource(resources);
     }
 
     private List<Resource> createTreeResource(List<Resource> resources) {
@@ -29,6 +28,7 @@ public class ResourceServiceImpl implements IResourceService{
             for (Resource r : resources) {
                 maps.put(r.getInt("id"),r);
             }
+//            System.out.println(JSON.toJSONString(maps,true));
 
             for (Integer id : maps.keySet()) {
                 Resource resource = maps.get(id);
@@ -41,6 +41,15 @@ public class ResourceServiceImpl implements IResourceService{
             }
             root.sort(1);
             treeResource = root.getSubResource();
+        }
+//        System.out.println(JSON.toJSONString(treeResource,true));
+        for (Resource rt : treeResource) {
+            List<Resource> subResource = rt.getSubResource();
+            if (null != subResource && !subResource.isEmpty()) {
+                for (Resource r: subResource) {
+                    System.out.println(r.get("name") + "--" + r.get("url"));
+                }
+            }
         }
         return treeResource;
     }
