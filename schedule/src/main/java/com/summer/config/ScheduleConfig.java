@@ -9,6 +9,7 @@ import com.jfinal.template.Engine;
 import com.summer.controller.html.IndexController;
 import com.summer.controller.html.LoginController;
 import com.summer.controller.json.ResourceController;
+import com.summer.interceptor.AuthInterceptor;
 import com.summer.util.MappingKit;
 
 /**
@@ -48,7 +49,7 @@ public class ScheduleConfig extends JFinalConfig {
     }
 
     public void configInterceptor(Interceptors interceptors) {
-
+        interceptors.add(new AuthInterceptor());
     }
 
     public void configHandler(Handlers handlers) {

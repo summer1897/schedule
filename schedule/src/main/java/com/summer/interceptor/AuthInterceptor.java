@@ -1,7 +1,10 @@
 package com.summer.interceptor;
 
+import com.alibaba.fastjson.JSON;
 import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
+import com.jfinal.core.Controller;
+import com.summer.model.User;
 
 /**
  * Created by Intellij IDEA
@@ -11,8 +14,16 @@ import com.jfinal.aop.Invocation;
  * @Description
  */
 public class AuthInterceptor implements Interceptor {
-    @Override
+
     public void intercept(Invocation invocation) {
 
+        Controller controller = invocation.getController();
+        User user = controller.getSessionAttr(User.LOGIN_SESSION_NAME);
+        System.out.println("user:" + JSON.toJSONString(user,true));
+        if (null == user) {
+            controller.redirect("/login");
+        } else {
+            invocation.invoke();
+        }
     }
 }

@@ -1,6 +1,8 @@
 package com.summer.controller.html;
 
+import com.jfinal.aop.Clear;
 import com.jfinal.core.Controller;
+import com.summer.interceptor.AuthInterceptor;
 import com.summer.model.User;
 import com.summer.service.ILoginService;
 import com.summer.service.impl.LoginServiceImpl;
@@ -15,22 +17,22 @@ import com.summer.service.impl.LoginServiceImpl;
  */
 public class LoginController extends Controller {
 
-    private static final String USER_NAME = "user";
-
     private ILoginService loginService = new LoginServiceImpl();
 
+    @Clear(AuthInterceptor.class)
     public void index() {
         renderJsp("login.jsp");
     }
 
+    @Clear(AuthInterceptor.class)
     public void validate() {
         String account = getPara("account");
         String password = getPara("password");
-        System.out.println(account);
+//        System.out.println(account);
         try {
             User user = loginService.login(account,password);
             if (null != user) {
-                this.setSessionAttr(USER_NAME,user);
+                this.setSessionAttr(User.LOGIN_SESSION_NAME,user);
 //                getSession().setAttribute(USER_NAME,user);
                 redirect("/index");
             } else {
@@ -43,9 +45,9 @@ public class LoginController extends Controller {
     }
 
     public void logout() {
-        User user = this.getSessionAttr(USER_NAME);
+        User user = this.getSessionAttr(User.LOGIN_SESSION_NAME);
         if (null != user) {
-            this.removeSessionAttr(USER_NAME);
+            this.removeSessionAttr(User.LOGIN_SESSION_NAME);
         }
         redirect("/login");
     }

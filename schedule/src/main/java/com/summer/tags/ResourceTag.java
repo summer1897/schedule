@@ -17,14 +17,21 @@ public class ResourceTag {
         StringBuilder sb = new StringBuilder();
         sb.append("<ul class='layui-nav layui-nav-tree'>\n");
         if (null != resources && !resources.isEmpty()) {
-            for (Resource resource : resources) {
+            for (int i = 0; i <resources.size(); ++i) {
+                Resource resource = resources.get(i);
                 //拼接根资源
                 String url = resource.get("url");
                 String name = resource.get("name");
                 List<Resource> subResource = resource.getSubResource();
-                sb.append("<li class='layui-nav-item'>\n");
+
+                //第一个菜单栏展开
+                if (0 == i) {
+                    sb.append("<li class='layui-nav-item layui-nav-itemed'>\n");
+                } else {
+                    sb.append("<li class='layui-nav-item'>\n");
+                }
                 if (null == url || "".equals(url.trim())) {
-                    sb.append("<a href='javascript'>\n")
+                    sb.append("<a href='javascript:;'>\n")
                         .append(name)
                         .append("</a>\n");
                 } else {

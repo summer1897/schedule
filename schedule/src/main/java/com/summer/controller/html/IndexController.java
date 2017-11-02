@@ -19,6 +19,7 @@ public class IndexController extends Controller {
         if (null != resources && !resources.isEmpty()) {
             setAttr("resources",resources);
         }
+//        System.out.println("hahah");
         renderJsp("index.jsp");
     }
 
