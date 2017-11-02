@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+        version="2.0">
+    <description>resources itearte to the page</description>
+    <tlib-version>3.0</tlib-version>
+    <short-name>fn</short-name>
+    <uri>http://boom.com/summer/tags/resources</uri>
+
+    <function>
+        <description>obj in collection</description>
+        <name>show</name>
+        <function-class>com.summer.tags.ResourceTag</function-class>
+        <function-signature>java.lang.String showResource(java.util.List)</function-signature>
+    </function>
+
+</taglib>
