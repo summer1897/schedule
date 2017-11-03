@@ -19,10 +19,10 @@ public class AuthInterceptor implements Interceptor {
 
         Controller controller = invocation.getController();
         User user = controller.getSessionAttr(User.LOGIN_SESSION_NAME);
-        System.out.println("user:" + JSON.toJSONString(user,true));
         if (null == user) {
             controller.redirect("/login");
         } else {
+            System.out.println("user:" + user.get("username"));
             invocation.invoke();
         }
     }

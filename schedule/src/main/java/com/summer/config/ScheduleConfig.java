@@ -1,6 +1,7 @@
 package com.summer.config;
 
 import com.jfinal.config.*;
+import com.jfinal.ext.interceptor.SessionInViewInterceptor;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.druid.DruidPlugin;
@@ -49,6 +50,9 @@ public class ScheduleConfig extends JFinalConfig {
     }
 
     public void configInterceptor(Interceptors interceptors) {
+        //需添加SessionInViewInterceptor，这样经过其他Interceptor处理后,
+        //Session中的全局变量才可以取出值
+        interceptors.add(new SessionInViewInterceptor());
         interceptors.add(new AuthInterceptor());
     }
 
