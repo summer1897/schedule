@@ -10,6 +10,7 @@
     <version>1.0.0</version>
     <modules>
         <module>schedule</module>
+        <module>static</module>
     </modules>
     <properties>
         <jetty-version>9.2.11.v20150529</jetty-version>
