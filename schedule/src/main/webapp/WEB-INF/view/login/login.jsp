@@ -6,7 +6,7 @@
     <title>后台登录</title>
     <meta name="author" content="summer"/>
     <jsp:include page="../common/common.jsp"/>
-    <link rel="stylesheet" type="text/css" href="${basePath}/assets/login/css/login.css"/>
+    <link rel="stylesheet" type="text/css" href="/assets/login/css/login.css"/>
     <style>
         body {
             height: 100%;
@@ -19,8 +19,8 @@
             position: absolute;
         }
     </style>
-    <script src="${basePath}/assets/login/js/verificationNumbers.js"></script>
-    <script src="${basePath}/assets/login/js/Particleground.js"></script>
+    <script src="/assets/login/js/verificationNumbers.js"></script>
+    <script src="/assets/login/js/Particleground.js"></script>
     <script>
         $(document).ready(function () {
             $("#login-panel").find('.item')
@@ -68,7 +68,7 @@
                     <strong>Boom后台管理系统</strong>
                     <em>Management System</em>
                 </div>
-                <form class="login-form" onsubmit="return checkForm()" action="${basePath}/login/validate" method="post">
+                <form class="login-form" onsubmit="return checkForm()" action="/schedule/login/validate" method="post">
                     <div class="item input-group">
                         <span class="glyphicon glyphicon-user input-group-addon"></span>
                         <input type="text" placeholder="账号" class="form-control" name="account" id="username_"/>

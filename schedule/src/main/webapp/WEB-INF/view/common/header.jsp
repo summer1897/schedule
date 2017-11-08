@@ -25,6 +25,6 @@
                 <dd><a href="">安全设置</a></dd>
             </dl>
         </li>
-        <li class="layui-nav-item"><a href="${basePath}/login/logout">注销</a></li>
+        <li class="layui-nav-item"><a href="/schedule/login/logout">注销</a></li>
     </ul>
 </div>

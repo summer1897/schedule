@@ -8,7 +8,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>schedule</artifactId>
     <packaging>war</packaging>
-    <name>schedule Maven Webapp</name>
+    <name>schedule</name>
     <url>http://maven.apache.org</url>
     <dependencies>
     </dependencies>
