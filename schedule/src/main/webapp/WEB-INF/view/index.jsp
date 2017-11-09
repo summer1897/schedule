@@ -15,13 +15,19 @@
     <!--content body-->
     <div class="layui-body">
         <!-- 内容主体区域 -->
-        <div style="padding: 15px;">内容主体区域</div>
+        <div class="layui-tab margin-clear" lay-allowClose="true">
+            <ul class="layui-tab-title">
+                <li class="layui-this">基本内容</li>
+            </ul>
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+                    <iframe src="/schedule/user/html/list" width="100%" height="100%" frameborder="0"></iframe>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <script>
-    layui.use('element',function() {
-        var element = layui.element;
-    });
 </script>
 </body>
 </html>

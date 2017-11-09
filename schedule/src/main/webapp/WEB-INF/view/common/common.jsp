@@ -13,3 +13,4 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/base.css" />
 <script type="text/javascript" src="/assets/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="/plugins/layui/layui.js"></script>
+<script type="text/javascript" src="/assets/js/base.js"></script>

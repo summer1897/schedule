@@ -15,7 +15,7 @@ public class ResourceTag {
 
     public static String showResource(List<Resource> resources) {
         StringBuilder sb = new StringBuilder();
-        sb.append("<ul class='layui-nav layui-nav-tree'>\n");
+        sb.append("<ul class='layui-nav layui-nav-tree' id='left-menu'>\n");
         if (null != resources && !resources.isEmpty()) {
             for (int i = 0; i <resources.size(); ++i) {
                 Resource resource = resources.get(i);
@@ -35,10 +35,10 @@ public class ResourceTag {
                         .append(name)
                         .append("</a>\n");
                 } else {
-                    sb.append("<a href='")
+                    sb.append("<a href='javascript:;' data-url='{url:")
                         .append(url)
-                        .append("'>\n")
-                        .append(name)
+                        .append(",title:").append(name)
+                        .append("}'>\n").append(name)
                         .append("</a>\n");
 
                 }
@@ -73,10 +73,10 @@ public class ResourceTag {
                         .append(name)
                         .append("</a>\n</dd>\n");
                 } else {
-                    sb.append("<dd>\n<a href='")
+                    sb.append("<dd>\n<a href='javascript:;' data-url='{\"url\":\"")
                         .append(url)
-                        .append("'>\n")
-                        .append(name)
+                        .append("\",\"title\":\"").append(name)
+                        .append("\"}'>\n").append(name)
                         .append("</a>\n</dd>\n");
                 }
 
