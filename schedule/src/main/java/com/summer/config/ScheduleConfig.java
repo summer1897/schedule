@@ -9,8 +9,9 @@ import com.jfinal.render.ViewType;
 import com.jfinal.template.Engine;
 import com.summer.controller.html.IndexController;
 import com.summer.controller.html.LoginController;
+import com.summer.controller.html.ResourceHtmlController;
 import com.summer.controller.html.UserHtmlController;
-import com.summer.controller.json.ResourceController;
+import com.summer.controller.json.ResourceJsonController;
 import com.summer.controller.json.UserJsonController;
 import com.summer.interceptor.AuthInterceptor;
 import com.summer.util.MappingKit;
@@ -34,8 +35,9 @@ public class ScheduleConfig extends JFinalConfig {
         //LoginController
         routes.add("/login", LoginController.class);
 
-        //ResourceController
-        routes.add("/resource",ResourceController.class);
+        //ResourceJsonController
+        routes.add("/resource/html", ResourceHtmlController.class,"");
+        routes.add("/resource/json",ResourceJsonController.class);
 
         //UserHtmlController
         routes.add("/user/json", UserJsonController.class);

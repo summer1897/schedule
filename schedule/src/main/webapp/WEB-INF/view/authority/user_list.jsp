@@ -3,7 +3,6 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>用户信息</title>
     <%@ include file="../common/common.jsp"%>
 </head>
 <body>
@@ -28,20 +27,31 @@
         <table class="layui-table" lay-data="{height:400,url:'/schedule/user/json/list',page:true,id:'user-list'}" lay-filter="user-list">
             <thead>
             <tr>
-                <%--<th lay-data="{checkbox: true, fixed: true,align: 'center'}" style="vertical-align:middle"></th>--%>
+                <th lay-data="{checkbox: true, fixed: true,align: 'center'}"></th>
                 <th lay-data="{field:'id',sort: true,width:60,align: 'center'}">Id</th>
                 <th lay-data="{field:'username',width:100}">用户名</th>
                 <th lay-data="{field:'email', sort: true,width:180}">用户邮箱</th>
                 <th lay-data="{field:'phone', sort: true,width:130}">用户手机</th>
                 <th lay-data="{field:'status',width:100}">状态</th>
                 <th lay-data="{field:'create_time',sort: true,width:180}">创建时间</th>
-                <th lay-data="{width:200,toolbar: '#operation-bar',align: 'center'}">操作</th>
+                <th lay-data="{width:260,toolbar: '#operation-bar',align: 'center'}">操作</th>
             </tr>
             </thead>
             <script type="text/html" id="operation-bar">
-                <a class="layui-btn layui-btn-primary layui-btn-mini" lay-event="detail">查看</a>
+                <%--<div class="layui-btn-group">--%>
+                    <a class="layui-btn layui-btn-warm layui-btn-small">
+                        <i class="layui-icon">&#xe615;</i>查看
+                    </a>
+                    <a class="layui-btn layui-btn-normal layui-btn-small">
+                        <i class="layui-icon">&#xe642;</i>编辑
+                    </a>
+                    <a class="layui-btn layui-btn-danger layui-btn-small">
+                        <i class="layui-icon">&#xe640;</i>删除
+                    </a>
+                <%--</div>--%>
+                <%--<a class="layui-btn layui-btn-primary layui-btn-mini" lay-event="detail">查看</a>
                 <a class="layui-btn layui-btn-mini" lay-event="edit">编辑</a>
-                <a class="layui-btn layui-btn-danger layui-btn-mini" lay-event="del">删除</a>
+                <a class="layui-btn layui-btn-danger layui-btn-mini" lay-event="del">删除</a>--%>
             </script>
         </table>
     </div>

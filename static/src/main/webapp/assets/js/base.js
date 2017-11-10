@@ -4,14 +4,13 @@ layui.config({
     var element = layui.element,
         table = layui.table,
         $ = layui.jquery;
-
-    $(function () {
        $("#left-menu").on("click","a",function () {
           var data = $(this).attr("data-url");
-          alert(data);
           if (data) {
-              alert("url: " + data.url + ",title: " + data.title);
+              var jsonData = JSON.parse(data);
+              // alert(jsonData.url);
+              var iframe = $("#main-content").children('iframe');
+              iframe.attr("src",jsonData.url);
           }
        });
-    });
 });

@@ -3,6 +3,11 @@ body{
 	padding:0px;
 	font-family: 微软雅黑;
 }
+
+.layui-form-checkbox[lay-skin=primary] {
+	margin-top: 5px!important;
+}
+
 a{
 	color: white;
 }

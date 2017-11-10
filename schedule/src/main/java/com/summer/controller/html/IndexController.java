@@ -15,11 +15,10 @@ public class IndexController extends Controller {
     private IResourceService resourceService = new ResourceServiceImpl();
 
     public void index()  {
-        List<Resource> resources = resourceService.queryAll();
+        List<Resource> resources = resourceService.queryTreeResource();
         if (null != resources && !resources.isEmpty()) {
             setAttr("resources",resources);
         }
-//        System.out.println("hahah");
         renderJsp("index.jsp");
     }
 

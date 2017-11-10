@@ -22,6 +22,8 @@
     <script src="/assets/login/js/verificationNumbers.js"></script>
     <script src="/assets/login/js/Particleground.js"></script>
     <script>
+        if (window != top)
+            top.location.href = location.href;
         $(document).ready(function () {
             $("#login-panel").find('.item')
                 .mouseover(function() {

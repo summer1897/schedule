@@ -35,7 +35,7 @@ public class ResourceTag {
                         .append(name)
                         .append("</a>\n");
                 } else {
-                    sb.append("<a href='javascript:;' data-url='{url:")
+                    sb.append("<a href='javascript:;' data-type='tabAdd' data-url='{url:")
                         .append(url)
                         .append(",title:").append(name)
                         .append("}'>\n").append(name)
@@ -73,7 +73,7 @@ public class ResourceTag {
                         .append(name)
                         .append("</a>\n</dd>\n");
                 } else {
-                    sb.append("<dd>\n<a href='javascript:;' data-url='{\"url\":\"")
+                    sb.append("<dd>\n<a href='javascript:;' data-type='tabAdd' data-url='{\"url\":\"")
                         .append(url)
                         .append("\",\"title\":\"").append(name)
                         .append("\"}'>\n").append(name)

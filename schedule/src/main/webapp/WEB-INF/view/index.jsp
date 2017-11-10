@@ -13,18 +13,21 @@
     <!--slide menu-->
     <jsp:include page="common/slider_menu.jsp"/>
     <!--content body-->
-    <div class="layui-body">
+    <div class="layui-body margin-bottom-clear">
         <!-- 内容主体区域 -->
-        <div class="layui-tab margin-clear" lay-allowClose="true">
+        <div id="main-content" style="padding:15px 15px 0px 15px;height:100%;">
+            <iframe scrolling="no" style="margin:0px;padding:0px;width:100%;height:100%;" src="/schedule/user/html/list" frameborder="0"></iframe>
+        </div>
+       <%-- <div class="layui-tab layui-tab-brief margin-clear" lay-allowClose="true" lay-filter="lay-tab-container">
             <ul class="layui-tab-title">
                 <li class="layui-this">基本内容</li>
             </ul>
             <div class="layui-tab-content">
                 <div class="layui-tab-item layui-show">
-                    <iframe src="/schedule/user/html/list" width="100%" height="100%" frameborder="0"></iframe>
+
                 </div>
             </div>
-        </div>
+        </div>--%>
     </div>
 </div>
 <script>

@@ -1,6 +1,6 @@
 package com.summer.service.impl;
 
-import com.alibaba.fastjson.JSON;
+import com.summer.base.utils.StringUtils;
 import com.summer.model.Resource;
 import com.summer.service.IResourceService;
 
@@ -13,8 +13,12 @@ public class ResourceServiceImpl implements IResourceService{
 
     public List<Resource> queryAll() {
         String sql = "select *from sys_resource";
-        List<Resource> resources = Resource.dao.find(sql);
+        return Resource.dao.find(sql);
+    }
 
+    public List<Resource> queryTreeResource() {
+        String sql = "select *from sys_resource";
+        List<Resource> resources = Resource.dao.find(sql);
         return createTreeResource(resources);
     }
 
@@ -43,14 +47,6 @@ public class ResourceServiceImpl implements IResourceService{
             treeResource = root.getSubResource();
         }
 //        System.out.println(JSON.toJSONString(treeResource,true));
-        for (Resource rt : treeResource) {
-            List<Resource> subResource = rt.getSubResource();
-            if (null != subResource && !subResource.isEmpty()) {
-                for (Resource r: subResource) {
-                    System.out.println(r.get("name") + "--" + r.get("url"));
-                }
-            }
-        }
         return treeResource;
     }
 
@@ -59,5 +55,30 @@ public class ResourceServiceImpl implements IResourceService{
             return null;
         String sql = "selcet *from sys_resource where id = ?";
         return Resource.dao.findFirst(sql,id);
+    }
+
+    public boolean updateFieldById(Integer id,String field, Object value) {
+        boolean result = false;
+        if (!StringUtils.isEmpty(field) && null != id && id.intValue() >= 0) {
+            Resource resource = Resource.dao.findById(id);
+            if (null != resource) {
+                result = resource.set(field,value).update();
+            }
+        }
+        return result;
+    }
+
+    public boolean updateFieldsById(Integer id,Map<String, Object> datas) {
+        boolean result = false;
+        if (null != id && id.intValue() >= 0 && null != datas && !datas.isEmpty()) {
+            Resource resource = Resource.dao.findById(id);
+            for (String field : datas.keySet()) {
+                if (StringUtils.isNotEmpty(field)) {
+                    resource.set(field,datas.get(field));
+                }
+            }
+            result = resource.update();
+        }
+        return result;
     }
 }
